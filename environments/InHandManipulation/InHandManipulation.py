@@ -319,25 +319,32 @@ class InHandManipulation(SomoEnv.SomoEnv):
             z_rotation_step_reward = box_or[2] - self.prev_box_or[2]
             self.reward_component_info["z_rotation_step"] += z_rotation_step_reward
             reward += reward_flags["z_rotation_step"] * z_rotation_step_reward
+            if "min_reward_delta" in reward_flags:
+                if z_rotation_step_reward < 0.5:
+                    reward -= reward_flags["z_rotation_step"]/10
 
         if "z_rotation" in reward_flags:
             z_rotation_reward = box_or[2] - self.box_start_or[2]
-            self.reward_component_info["z_rotation"] += z_rotation_reward
+            # self.reward_component_info["z_rotation"] += z_rotation_reward
+            self.reward_component_info["z_rotation"] = z_rotation_reward
             reward += reward_flags["z_rotation"] * z_rotation_reward
 
         if "x_rotation" in reward_flags:
             x_rotation_reward = abs(box_or[0] - self.box_start_or[0])
-            self.reward_component_info["x_rotation"] += x_rotation_reward
+            # self.reward_component_info["x_rotation"] += x_rotation_reward
+            self.reward_component_info["x_rotation"] = x_rotation_reward
             reward += reward_flags["x_rotation"] * x_rotation_reward
 
         if "y_rotation" in reward_flags:
             y_rotation_reward = abs(box_or[1] - self.box_start_or[1])
-            self.reward_component_info["y_rotation"] += y_rotation_reward
+            # self.reward_component_info["y_rotation"] += y_rotation_reward
+            self.reward_component_info["y_rotation"] = y_rotation_reward
             reward += reward_flags["y_rotation"] * y_rotation_reward
 
         if "position" in reward_flags:
             position_reward = np.sum(np.abs(box_pos - self.box_start_pos))
-            self.reward_component_info["position"] += position_reward
+            # self.reward_component_info["position"] += position_reward
+            self.reward_component_info["position"] = position_reward
             reward += reward_flags["position"] * position_reward
 
         return reward
