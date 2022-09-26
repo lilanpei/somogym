@@ -139,4 +139,6 @@ dmypy.json
 .pyre/
 
 # Pytorch
-*.pt
+/tests
+/logs
+*.urdf
