@@ -317,11 +317,8 @@ class InHandManipulation(SomoEnv.SomoEnv):
 
         if "z_rotation_step" in reward_flags:
             z_rotation_step_reward = box_or[2] - self.prev_box_or[2]
-            self.reward_component_info["z_rotation_step"] += z_rotation_step_reward
-            reward += reward_flags["z_rotation_step"] * z_rotation_step_reward
-            if "min_reward_delta" in reward_flags:
-                if z_rotation_step_reward < 0.5:
-                    reward -= reward_flags["z_rotation_step"]/10
+            self.reward_component_info["z_rotation_step"] += np.degrees(z_rotation_step_reward)
+            reward += reward_flags["z_rotation_step"] * np.degrees(z_rotation_step_reward)
 
         if "z_rotation" in reward_flags:
             z_rotation_reward = box_or[2] - self.box_start_or[2]
@@ -432,8 +429,8 @@ class InHandManipulation(SomoEnv.SomoEnv):
         box_pos, box_or = np.array(box_pos), np.array(box_or)
 
         if binary:
-            return np.degrees(box_or[2]) >= 45 and box_pos[2] > 0
-
+            # return np.degrees(box_or[2]) >= 45 and box_pos[2] > 0
+            return np.degrees(box_or[2]) >= 145 and box_pos[2] > 0
         if box_pos[2] > 0:
             return np.degrees(box_or[2])
         return 0
