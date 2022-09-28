@@ -164,12 +164,13 @@ class InHandManipulation(SomoEnv.SomoEnv):
             self.z_rotation_unwrapped += 2 * np.pi + delta_z_rot
 
         try:
-            failure_penalty = self.run_config["failure_penalty"]
+            failure_penalty = self.run_config["failure_penalty_multiplier"]
         except:
             failure_penalty = 0
 
         # For IHM, done means we failed.
-        if done and failure_penalty:
+        # if done and failure_penalty:
+        if not self.check_success() and failure_penalty:
             reward -= failure_penalty
 
         return (obs, reward, done, info)
