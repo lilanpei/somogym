@@ -1,0 +1,22 @@
+<robot name="cylinder">
+
+  <link name="cylinder">
+         <visual>
+           <geometry>
+             <cylinder length="2.5" radius="0.25"/>
+           </geometry>
+           <material name="blue">
+             <color rgba="0 0 .8 1"/>
+           </material>
+         </visual>
+        <collision>
+           <geometry>
+             <cylinder length="2.5" radius="0.25"/>
+           </geometry>
+         </collision>
+        <inertial>
+          <mass value="0.001"/>
+          <inertia ixx=".005" ixy="0.0" ixz="0" iyy=".005" iyz="0.0" izz=".00005"/>
+        </inertial>
+       </link>
+</robot>
