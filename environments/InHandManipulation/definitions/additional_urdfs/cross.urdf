@@ -1,0 +1,47 @@
+<robot name="cross">
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+  <link name="rect_x">
+		<visual>
+		    <origin xyz="0 0 0." rpy="0 0 0.79"/>
+			<geometry>
+				<box size="0.25 2.5 1"/>
+			</geometry>
+			<material name="blue"/>
+		</visual>
+        <collision>
+            <origin xyz="0 0 0." rpy="0 0 0.79"/>
+			<geometry>
+				<box size="0.25 2.5 1"/>
+			</geometry>
+        </collision>
+        <inertial>
+            <mass value="0.001"/>
+            <inertia ixx="9" ixy="0.0" ixz="0" iyy="1" iyz="0.0" izz=".5"/>
+        </inertial>
+  </link>
+  <link name="rect_y">
+		<visual>
+		    <origin xyz="0 0 0." rpy="0 0 0.79"/>
+			<geometry>
+				<box size="2.5 0.25 1"/>
+			</geometry>
+			<material name="blue"/>
+		</visual>
+        <collision>
+		    <origin xyz="0 0 0." rpy="0 0 0.79"/>
+			<geometry>
+				<box size="2.5 0.25 1"/>
+			</geometry>
+        </collision>
+        <inertial>
+            <mass value="0.001"/>
+            <inertia ixx="9" ixy="0.0" ixz="0" iyy="1" iyz="0.0" izz=".5"/>
+        </inertial>
+  </link>
+  <joint name="cross" type="fixed">
+    <parent link="rect_x"/>
+    <child link="rect_y"/>
+  </joint>
+</robot>

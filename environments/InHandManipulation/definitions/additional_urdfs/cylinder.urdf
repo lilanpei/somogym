@@ -2,6 +2,7 @@
 
   <link name="cylinder">
          <visual>
+           <origin xyz="0 0 0." rpy="0.78538 1.57075 0"/>
            <geometry>
              <cylinder length="2.5" radius="0.25"/>
            </geometry>
@@ -10,13 +11,14 @@
            </material>
          </visual>
         <collision>
+           <origin xyz="0 0 0." rpy="0.78538 1.57075 0"/>
            <geometry>
              <cylinder length="2.5" radius="0.25"/>
            </geometry>
          </collision>
         <inertial>
           <mass value="0.001"/>
-          <inertia ixx=".005" ixy="0.0" ixz="0" iyy=".005" iyz="0.0" izz=".00005"/>
+          <inertia ixx=".5" ixy="0.0" ixz="0" iyy="0.0" iyz="0.0" izz=".5"/>
         </inertial>
        </link>
 </robot>

@@ -1,24 +1,24 @@
 <robot name="rect">
-
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
   <link name="rect">
 		<visual>
-		    <origin xyz="0 0 0." rpy="0 0 0"/>
+		    <origin xyz="0 0 0." rpy="0 0 0.79"/>
 			<geometry>
-				<box size="0.5 0.5 2.5"/>
+				<box size="0.25 2.5 1"/>
 			</geometry>
-			<material name="anotherOne">
-	       		<color rgba="0 0.8 0.3 1.0"/>
-	     	</material>
+			<material name="blue"/>
 		</visual>
         <collision>
-          <geometry>
-				<box size="0.5 0.5 2.5"/>
-          </geometry>
+            <origin xyz="0 0 0." rpy="0 0 0.79"/>
+			<geometry>
+				<box size="0.25 2.5 1"/>
+			</geometry>
         </collision>
         <inertial>
-          <mass value="0.001"/>
-        <inertia ixx=".50" ixy="0.0" ixz="0" iyy=".5" iyz="0.0" izz=".5"/>
-    </inertial>
+            <mass value="0.001"/>
+            <inertia ixx="9" ixy="0.0" ixz="0" iyy="1" iyz="0.0" izz=".5"/>
+        </inertial>
   </link>
-
 </robot>

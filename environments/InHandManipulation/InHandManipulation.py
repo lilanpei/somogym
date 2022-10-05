@@ -70,21 +70,20 @@ class InHandManipulation(SomoEnv.SomoEnv):
         self.palm_start_or = p.getQuaternionFromEuler([0, 0, 0])
         self.palm_friction = 0.15
 
-        if "object" in run_config:
-            if run_config['object'] == "cylinder":
-                pen_radius = 0.25
-                self.box_start_pos = np.array([0.0, 0.0, pen_radius + 2.25])
-                self.box_start_or = np.array([0, -np.pi / 2, -np.pi*1/4])
-            elif run_config['object'] == "rect":
-                self.box_start_pos = np.array([0.0, 0.0, 2.25])
-                self.box_start_or = np.array([0, -np.pi / 2, -np.pi*1/4])
-            else:
-                self.box_start_pos = np.array([0.0, 0.0, 2.25])
-                self.box_start_or = np.array([0, -np.pi / 2, -np.pi*1/4])
-        else:
-            self.box_start_pos = np.array([0.0, 0.0, 2.25])
-            self.box_start_or = np.array([0, 0, 0])
-
+        # if "object" in run_config:
+        #     if run_config['object'] == "cylinder":
+        #         pen_radius = 0.25
+        #         self.box_start_pos = np.array([0.0, 0.0, pen_radius + 2.25])
+        #         self.box_start_or = np.array([0, -np.pi / 2, -np.pi*1/4])
+        #     elif run_config['object'] == "rect":
+        #         self.box_start_pos = np.array([0.0, 0.0, 2.25])
+        #         self.box_start_or = np.array([0, 0, 0])
+        #     else:
+        #         self.box_start_pos = np.array([0.0, 0.0, 2.25])
+        #         self.box_start_or = np.array([0, -np.pi / 2, -np.pi*1/4])
+        # else:
+        self.box_start_pos = np.array([0.0, 0.0, 2.25])
+        self.box_start_or = np.array([0, 0, 0])
         self.box_start_or_quat = p.getQuaternionFromEuler(list(self.box_start_or))
         self.box_pos = self.box_start_pos
         self.box_or = self.box_start_or

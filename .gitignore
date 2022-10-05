@@ -141,3 +141,6 @@ dmypy.json
 # Pytorch
 /tests
 /logs
+environments/InHandManipulation/definitions/IHM_finger.urdf
+environments/PenSpinner/definitions/PS_finger_round.urdf
+environments/PlanarBlockPushing/definitions/continuum_manipulator.urdf
