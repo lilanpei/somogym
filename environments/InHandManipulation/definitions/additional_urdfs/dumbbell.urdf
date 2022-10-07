@@ -1,0 +1,79 @@
+<robot name="dumbbell">
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+  <material name="Cyan">
+    <color rgba="0 1.0 1.0 1.0"/>
+  </material>
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+  <link name="rect_base">
+		<visual>
+		    <origin xyz="0 0 0." rpy="0 0 0.79"/>
+			<geometry>
+				<box size="0.25 2.5 1"/>
+			</geometry>
+			<material name="Cyan"/>
+		</visual>
+        <collision>
+		    <origin xyz="0 0 0." rpy="0 0 0.79"/>
+			<geometry>
+				<box size="0.25 2.5 1"/>
+			</geometry>
+        </collision>
+        <inertial>
+            <mass value="0.001"/>
+            <inertia ixx="9" ixy="0.0" ixz="0" iyy="1" iyz="0.0" izz=".5"/>
+        </inertial>
+  </link>
+  <link name="rect_x">
+		<visual>
+		    <origin xyz="-0.8 0.8 0" rpy="0 0 -0.79"/>
+			<geometry>
+				<box size="0.25 1 1"/>
+			</geometry>
+			<material name="Cyan"/>
+		</visual>
+        <collision>
+            <origin xyz="-0.8 0.8 0" rpy="0 0 -0.79"/>
+			<geometry>
+				<box size="0.25 1 1"/>
+			</geometry>
+        </collision>
+        <inertial>
+            <mass value="0.001"/>
+            <inertia ixx="9" ixy="0.0" ixz="0" iyy="1" iyz="0.0" izz=".5"/>
+        </inertial>
+  </link>
+  <link name="rect_y">
+		<visual>
+		    <origin xyz="0.8 -0.8 0" rpy="0 0 -0.79"/>
+			<geometry>
+				<box size="0.25 1 1"/>
+			</geometry>
+			<material name="Cyan"/>
+		</visual>
+        <collision>
+            <origin xyz="0.8 -0.8 0" rpy="0 0 -0.79"/>
+			<geometry>
+				<box size="0.25 1 1"/>
+			</geometry>
+        </collision>
+        <inertial>
+            <mass value="0.001"/>
+            <inertia ixx="9" ixy="0.0" ixz="0" iyy="1" iyz="0.0" izz=".5"/>
+        </inertial>
+  </link>
+  <joint name="x" type="fixed">
+    <parent link="rect_base"/>
+    <child link="rect_x"/>
+  </joint>
+  <joint name="y" type="fixed">
+    <parent link="rect_base"/>
+    <child link="rect_y"/>
+  </joint>
+</robot>
