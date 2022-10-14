@@ -1,6 +1,6 @@
-<robot name="box">
+<robot name="ball">
 
-  <link name="box">
+  <link name="ball">
 		<visual>
 		    <origin xyz="0 0 0." rpy="0 0 0"/>
 			<geometry>
