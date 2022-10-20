@@ -6,11 +6,11 @@ observation_flags:
   box_pos:
   box_or:
   box_velocity:
-  positions: 4
-  velocities: 4
-  tip_pos:
-  angles: 4
-  curvatures: 5
+  positions: 10
+  velocities: 10
+  # tip_pos:
+  # angles: 3
+  # curvatures: 5
   applied_input_torques:
 reward_flags:
   z_rotation_step: 1000
