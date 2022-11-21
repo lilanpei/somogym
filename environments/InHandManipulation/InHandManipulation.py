@@ -443,7 +443,7 @@ class InHandManipulation(SomoEnv.SomoEnv):
 
         if binary:
             # return np.degrees(box_or[2]) >= 45 and box_pos[2] > 0
-            return np.degrees(box_or[2]) >= 145 and box_pos[2] > 0
+            return (np.degrees(box_or[2]) >= 145 or np.degrees(box_or[2]) < -180) and box_pos[2] > 0
         if box_pos[2] > 0:
             return np.degrees(box_or[2])
         return 0
