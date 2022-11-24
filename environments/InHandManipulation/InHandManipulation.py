@@ -1,5 +1,6 @@
 import numpy as np
 import os
+import pandas as pd
 import pybullet as p
 
 from somo.sm_manipulator_definition import SMManipulatorDefinition
@@ -115,6 +116,10 @@ class InHandManipulation(SomoEnv.SomoEnv):
             gravity = [0, 0, -196.2]
             ground_plane_height = None
 
+        object_urdf_path = os.path.join(os.path.dirname(__file__), "definitions/additional_urdfs/")
+        obj_names = [obj[:-5] for obj in os.listdir(object_urdf_path) if obj.endswith('.urdf')]
+        self.objs_df = pd.get_dummies(obj_names)
+
         super().__init__(
             manipulators=manipulators,
             start_positions=start_positions,
@@ -183,6 +188,7 @@ class InHandManipulation(SomoEnv.SomoEnv):
     def get_observation_shape(self):
         # possible observation flags: box_pos, box_or, torques
         obs_dimension_per_sample = {
+            "object_id": len(self.objs_df),
             "box_pos": 3,
             "box_or": 3,
             "box_zrot_unwrapped": 1,
@@ -207,6 +213,12 @@ class InHandManipulation(SomoEnv.SomoEnv):
             components=list(obs_flags.keys())
         )
         state = np.array([])
+
+        if "object_id" in obs_flags :
+            if not self.run_config['object']:
+                self.run_config['object'] = 'cube'
+            object_id = self.objs_df[self.run_config['object']].values
+            state = np.concatenate((state, np.array(object_id)))
 
         if "box_pos" in obs_flags or "box_or" in obs_flags:
             box_pos, box_or_quat = p.getBasePositionAndOrientation(
